@@ -1,0 +1,25 @@
+{
+  "scene_id": "48458663",
+  "total_frames": 20,
+  "resolution": [
+    256,
+    192
+  ],
+  "objects": [
+    "table",
+    "cabinet",
+    "tv_monitor",
+    "bed",
+    "chair",
+    "shelf"
+  ],
+  "source": "ARKitScenes",
+  "test_queries": [
+    "the chair",
+    "the table",
+    "the bed",
+    "the cabinet",
+    "the tv",
+    "the chair near the table"
+  ]
+}
