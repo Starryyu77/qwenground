@@ -1,0 +1,170 @@
+INFO:qwenground_system:初始化QwenGround系统...
+
+    ╔═══════════════════════════════════════════════════════════╗
+    ║                                                           ║
+    ║               🎯 QwenGround System v1.0 🎯                ║
+    ║                                                           ║
+    ║   Zero-Shot 3D Visual Grounding with Qwen2-VL            ║
+    ║                                                           ║
+    ╚═══════════════════════════════════════════════════════════╝
+    
+
+检查依赖...
+✅ 所有依赖已安装
+
+初始化QwenGround系统...
+  模型: Qwen/Qwen2-VL-7B-Instruct
+  设备: cpu
+  API模式: 否
+2025-10-06 21:57:00 - qwenground_system - INFO - 初始化QwenGround系统...
+INFO:qwenground_system:初始化模块...
+2025-10-06 21:57:00 - qwenground_system - INFO - 初始化模块...
+INFO:utils.vlm_client:加载模型: Qwen/Qwen2-VL-7B-Instruct
+2025-10-06 21:57:02 - utils.vlm_client - INFO - 加载模型: Qwen/Qwen2-VL-7B-Instruct
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:09<00:37,  9.49s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:09<00:00,  1.90s/it]
+WARNING:accelerate.big_modeling:Some parameters are on the meta device because they were offloaded to the disk.
+2025-10-06 21:57:13 - accelerate.big_modeling - WARNING - Some parameters are on the meta device because they were offloaded to the disk.
+The image processor of type `Qwen2VLImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. Note that this behavior will be extended to all models in a future release.
+INFO:utils.vlm_client:模型加载完成
+2025-10-06 21:57:18 - utils.vlm_client - INFO - 模型加载完成
+INFO:qwenground_system:系统初始化完成
+2025-10-06 21:57:18 - qwenground_system - INFO - 系统初始化完成
+INFO:qwenground_system:============================================================
+
+开始处理...
+
+2025-10-06 21:57:18 - qwenground_system - INFO - ============================================================
+INFO:qwenground_system:开始运行QwenGround
+2025-10-06 21:57:18 - qwenground_system - INFO - 开始运行QwenGround
+INFO:qwenground_system:输入: data/arkitscenes_test/processed/48458663/images
+2025-10-06 21:57:18 - qwenground_system - INFO - 输入: data/arkitscenes_test/processed/48458663/images
+INFO:qwenground_system:查询: the chair
+2025-10-06 21:57:18 - qwenground_system - INFO - 查询: the chair
+INFO:qwenground_system:输入类型: images
+2025-10-06 21:57:18 - qwenground_system - INFO - 输入类型: images
+INFO:qwenground_system:============================================================
+2025-10-06 21:57:18 - qwenground_system - INFO - ============================================================
+INFO:qwenground_system:
+[1/5] 视角适应：提取关键帧...
+2025-10-06 21:57:18 - qwenground_system - INFO - 
+[1/5] 视角适应：提取关键帧...
+INFO:modules.perspective_adapter:找到 20 张图像
+2025-10-06 21:57:18 - modules.perspective_adapter - INFO - 找到 20 张图像
+加载图像:   0%|          | 0/15 [00:00<?, ?it/s]加载图像: 100%|██████████| 15/15 [00:00<00:00, 782.56it/s]
+INFO:qwenground_system:  ✓ 提取了 15 个关键帧 (耗时: 0.02s)
+2025-10-06 21:57:18 - qwenground_system - INFO -   ✓ 提取了 15 个关键帧 (耗时: 0.02s)
+INFO:qwenground_system:
+[2/5] 3D重建：生成点云...
+2025-10-06 21:57:18 - qwenground_system - INFO - 
+[2/5] 3D重建：生成点云...
+INFO:modules.reconstruction_3d:开始3D重建，方法: depth
+2025-10-06 21:57:18 - modules.reconstruction_3d - INFO - 开始3D重建，方法: depth
+INFO:modules.reconstruction_3d:处理 15 个关键帧...
+2025-10-06 21:57:18 - modules.reconstruction_3d - INFO - 处理 15 个关键帧...
+INFO:modules.reconstruction_3d:加载深度估计模型: MiDaS_small
+2025-10-06 21:57:18 - modules.reconstruction_3d - INFO - 加载深度估计模型: MiDaS_small
+Using cache found in /Users/starryyu/.cache/torch/hub/intel-isl_MiDaS_master
+/opt/miniconda3/lib/python3.13/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Using cache found in /Users/starryyu/.cache/torch/hub/rwightman_gen-efficientnet-pytorch_master
+Using cache found in /Users/starryyu/.cache/torch/hub/intel-isl_MiDaS_master
+INFO:modules.reconstruction_3d:深度估计模型加载完成
+Loading weights:  None
+2025-10-06 21:57:20 - modules.reconstruction_3d - INFO - 深度估计模型加载完成
+INFO:modules.reconstruction_3d:  帧 1/15: 生成 691199 个点
+2025-10-06 21:57:20 - modules.reconstruction_3d - INFO -   帧 1/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 2/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 2/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 3/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 3/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 4/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 4/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 5/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 5/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 6/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 6/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 7/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 7/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 8/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 8/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 9/15: 生成 691199 个点
+2025-10-06 21:57:21 - modules.reconstruction_3d - INFO -   帧 9/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 10/15: 生成 691199 个点
+2025-10-06 21:57:22 - modules.reconstruction_3d - INFO -   帧 10/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 11/15: 生成 691199 个点
+2025-10-06 21:57:22 - modules.reconstruction_3d - INFO -   帧 11/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 12/15: 生成 691199 个点
+2025-10-06 21:57:22 - modules.reconstruction_3d - INFO -   帧 12/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 13/15: 生成 691199 个点
+2025-10-06 21:57:22 - modules.reconstruction_3d - INFO -   帧 13/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 14/15: 生成 691199 个点
+2025-10-06 21:57:22 - modules.reconstruction_3d - INFO -   帧 14/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:  帧 15/15: 生成 691199 个点
+2025-10-06 21:57:22 - modules.reconstruction_3d - INFO -   帧 15/15: 生成 691199 个点
+INFO:modules.reconstruction_3d:合并点云: 总共 10367985 个点
+2025-10-06 21:57:22 - modules.reconstruction_3d - INFO - 合并点云: 总共 10367985 个点
+INFO:modules.reconstruction_3d:下采样后: 66991 个点
+2025-10-06 21:57:23 - modules.reconstruction_3d - INFO - 下采样后: 66991 个点
+INFO:qwenground_system:  ✓ 生成点云: 66991 个点 (耗时: 4.98s)
+2025-10-06 21:57:23 - qwenground_system - INFO -   ✓ 生成点云: 66991 个点 (耗时: 4.98s)
+INFO:modules.reconstruction_3d:点云已保存至: outputs/arkitscenes_chair_test/pointcloud.ply
+2025-10-06 21:57:23 - modules.reconstruction_3d - INFO - 点云已保存至: outputs/arkitscenes_chair_test/pointcloud.ply
+INFO:qwenground_system:
+[3/5] 构建Object Lookup Table...
+2025-10-06 21:57:23 - qwenground_system - INFO - 
+[3/5] 构建Object Lookup Table...
+INFO:modules.fusion_alignment:构建Object Lookup Table...
+2025-10-06 21:57:23 - modules.fusion_alignment - INFO - 构建Object Lookup Table...
+INFO:utils.object_detector:加载YOLO模型: yolov8x.pt
+2025-10-06 21:57:23 - utils.object_detector - INFO - 加载YOLO模型: yolov8x.pt
+INFO:utils.object_detector:YOLO模型加载完成
+2025-10-06 21:57:23 - utils.object_detector - INFO - YOLO模型加载完成
+INFO:modules.fusion_alignment:  帧 0: 检测到 0 个物体
+2025-10-06 21:57:23 - modules.fusion_alignment - INFO -   帧 0: 检测到 0 个物体
+INFO:modules.fusion_alignment:  帧 1: 检测到 3 个物体
+2025-10-06 21:57:24 - modules.fusion_alignment - INFO -   帧 1: 检测到 3 个物体
+INFO:modules.fusion_alignment:  帧 2: 检测到 1 个物体
+2025-10-06 21:57:24 - modules.fusion_alignment - INFO -   帧 2: 检测到 1 个物体
+INFO:modules.fusion_alignment:  帧 3: 检测到 3 个物体
+2025-10-06 21:57:24 - modules.fusion_alignment - INFO -   帧 3: 检测到 3 个物体
+INFO:modules.fusion_alignment:  帧 4: 检测到 3 个物体
+2025-10-06 21:57:25 - modules.fusion_alignment - INFO -   帧 4: 检测到 3 个物体
+INFO:modules.fusion_alignment:  帧 5: 检测到 2 个物体
+2025-10-06 21:57:25 - modules.fusion_alignment - INFO -   帧 5: 检测到 2 个物体
+INFO:modules.fusion_alignment:  帧 6: 检测到 3 个物体
+2025-10-06 21:57:25 - modules.fusion_alignment - INFO -   帧 6: 检测到 3 个物体
+INFO:modules.fusion_alignment:  帧 7: 检测到 0 个物体
+2025-10-06 21:57:26 - modules.fusion_alignment - INFO -   帧 7: 检测到 0 个物体
+INFO:modules.fusion_alignment:  帧 8: 检测到 1 个物体
+2025-10-06 21:57:26 - modules.fusion_alignment - INFO -   帧 8: 检测到 1 个物体
+INFO:modules.fusion_alignment:  帧 9: 检测到 0 个物体
+2025-10-06 21:57:26 - modules.fusion_alignment - INFO -   帧 9: 检测到 0 个物体
+INFO:modules.fusion_alignment:  帧 10: 检测到 0 个物体
+2025-10-06 21:57:26 - modules.fusion_alignment - INFO -   帧 10: 检测到 0 个物体
+INFO:modules.fusion_alignment:  帧 11: 检测到 0 个物体
+2025-10-06 21:57:27 - modules.fusion_alignment - INFO -   帧 11: 检测到 0 个物体
+INFO:modules.fusion_alignment:  帧 12: 检测到 0 个物体
+2025-10-06 21:57:27 - modules.fusion_alignment - INFO -   帧 12: 检测到 0 个物体
+INFO:modules.fusion_alignment:  帧 13: 检测到 3 个物体
+2025-10-06 21:57:27 - modules.fusion_alignment - INFO -   帧 13: 检测到 3 个物体
+INFO:modules.fusion_alignment:  帧 14: 检测到 0 个物体
+2025-10-06 21:57:28 - modules.fusion_alignment - INFO -   帧 14: 检测到 0 个物体
+INFO:modules.object_lookup_table:合并前: 19 个物体, 合并后: 19 个物体
+2025-10-06 21:57:28 - modules.object_lookup_table - INFO - 合并前: 19 个物体, 合并后: 19 个物体
+INFO:modules.fusion_alignment:OLT构建完成: 共 19 个唯一物体
+2025-10-06 21:57:28 - modules.fusion_alignment - INFO - OLT构建完成: 共 19 个唯一物体
+INFO:qwenground_system:  ✓ 检测到 19 个唯一物体 (耗时: 4.89s)
+2025-10-06 21:57:28 - qwenground_system - INFO -   ✓ 检测到 19 个唯一物体 (耗时: 4.89s)
+INFO:modules.object_lookup_table:OLT已保存至: outputs/arkitscenes_chair_test/olt.json
+2025-10-06 21:57:28 - modules.object_lookup_table - INFO - OLT已保存至: outputs/arkitscenes_chair_test/olt.json
+INFO:qwenground_system:
+[4/5] 目标定位：使用VLM进行grounding...
+2025-10-06 21:57:28 - qwenground_system - INFO - 
+[4/5] 目标定位：使用VLM进行grounding...
+INFO:modules.fusion_alignment:开始定位目标: 'the chair'
+2025-10-06 21:57:28 - modules.fusion_alignment - INFO - 开始定位目标: 'the chair'
+INFO:qwen_vl_utils.vision_process:set VIDEO_TOTAL_PIXELS: 90316800
+2025-10-06 21:57:28 - qwen_vl_utils.vision_process - INFO - set VIDEO_TOTAL_PIXELS: 90316800
+/opt/miniconda3/lib/python3.13/site-packages/transformers/generation/utils.py:2412: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on mps. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('mps') before running `.generate()`.
+  warnings.warn(

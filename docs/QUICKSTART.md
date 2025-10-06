@@ -108,6 +108,8 @@ if result['success']:
 ### 1. 启动vLLM服务器
 
 ```bash
+# 推荐：通过环境变量提供密钥
+export API_KEY="<your_api_key>"
 bash scripts/deploy_vllm.sh
 ```
 
@@ -118,7 +120,7 @@ python -m vllm.entrypoints.openai.api_server \
     --model Qwen/Qwen2-VL-7B-Instruct \
     --host 0.0.0.0 \
     --port 8000 \
-    --api-key sk-34bb9d7e720b4160865a2be94e242c51
+    --api-key "$API_KEY"
 ```
 
 ### 2. 使用API模式运行
@@ -127,7 +129,7 @@ python -m vllm.entrypoints.openai.api_server \
 python qwenground_main.py \
     --use_api \
     --api_url http://localhost:8000/v1 \
-    --api_key sk-34bb9d7e720b4160865a2be94e242c51 \
+    --api_key "$API_KEY" \
     --input_path ./video.mp4 \
     --query "the person on the left"
 ```

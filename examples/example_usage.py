@@ -72,7 +72,7 @@ def example_api_mode():
         device="cuda",
         use_api=True,
         api_url="http://localhost:8000/v1",
-        api_key="sk-34bb9d7e720b4160865a2be94e242c51"
+        api_key=None  # 从环境变量或外部配置提供
     )
     
     # 运行推理

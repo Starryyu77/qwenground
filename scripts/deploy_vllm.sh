@@ -7,18 +7,23 @@ echo "=========================================="
 echo "QwenGround vLLM 部署脚本"
 echo "=========================================="
 
-# 配置参数
+# 配置参数（通过环境变量传入，避免在仓库中硬编码密钥）
 MODEL_NAME=${MODEL_NAME:-"Qwen/Qwen2-VL-7B-Instruct"}
 HOST=${HOST:-"0.0.0.0"}
 PORT=${PORT:-8000}
 GPU_COUNT=${GPU_COUNT:-1}
-API_KEY=${API_KEY:-"sk-34bb9d7e720b4160865a2be94e242c51"}
+API_KEY=${API_KEY:-""}
 
 echo ""
 echo "配置信息:"
 echo "  模型: $MODEL_NAME"
 echo "  地址: $HOST:$PORT"
 echo "  GPU数量: $GPU_COUNT"
+if [ -z "$API_KEY" ]; then
+  echo "  API密钥: [未设置] (请通过环境变量 API_KEY 提供)"
+else
+  echo "  API密钥: [已提供]"
+fi
 echo ""
 
 # 检查vLLM是否安装
@@ -50,7 +55,7 @@ python -m vllm.entrypoints.openai.api_server \
     --port "$PORT" \
     --tensor-parallel-size "$GPU_COUNT" \
     --dtype auto \
-    --api-key "$API_KEY" \
+    ${API_KEY:+--api-key "$API_KEY"} \
     --max-model-len 4096 \
     --trust-remote-code
 
