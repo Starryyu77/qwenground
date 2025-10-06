@@ -1,10 +1,14 @@
-# QwenGround: 零-Shot 3D场景理解和定位系统
+# QwenGround: Zero-Shot 3D Visual Grounding
 
-基于 [SeeGround](https://github.com/iris0329/SeeGround) 思路，使用 Qwen2-VL-7B-Instruct 实现的零-shot开放词汇3D视觉定位系统。
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Qwen2-VL](https://img.shields.io/badge/Model-Qwen2--VL-green.svg)](https://github.com/QwenLM/Qwen2-VL)
+
+基于 [SeeGround](https://github.com/iris0329/SeeGround) 思路，使用 Qwen2-VL 实现的零-shot开放词汇3D视觉定位系统。
 
 ## 📋 项目概述
 
-QwenGround 能够从视频或图像序列中理解3D场景，并根据自然语言描述定位目标物体的3D边界框。
+QwenGround 能够从视频或图像序列中理解3D场景，并根据自然语言描述定位目标物体的3D边界框。无需3D标注数据，支持任意开放词汇查询。
 
 ### 核心特性
 
@@ -13,6 +17,7 @@ QwenGround 能够从视频或图像序列中理解3D场景，并根据自然语�
 - 🔄 **2D到3D重建**: 从2D输入自动重建粗糙3D场景
 - 🧠 **大模型驱动**: 基于Qwen2-VL的强大视觉-语言理解能力
 - 📦 **3D可视化**: 输出交互式3D场景和边界框
+- 🏠 **ARKitScenes支持**: 内置对ARKitScenes数据集的支持
 
 ## 🏗️ 系统架构
 
@@ -42,7 +47,8 @@ QwenGround 能够从视频或图像序列中理解3D场景，并根据自然语�
 
 ```bash
 # 克隆项目
-cd /Users/starryyu/Documents/tinghua/QwenGround
+git clone https://github.com/Starryyu77/qwenground.git
+cd qwenground
 
 # 安装依赖
 pip install -r requirements.txt
@@ -51,6 +57,8 @@ pip install -r requirements.txt
 # Ubuntu: sudo apt-get install colmap
 # macOS: brew install colmap
 ```
+
+详细安装说明请查看 [docs/INSTALL.md](docs/INSTALL.md)
 
 ### 使用示例
 
@@ -151,18 +159,32 @@ detection:
 ```
 QwenGround/
 ├── qwenground_main.py          # 主入口
-├── modules/
+├── qwenground_system.py        # 系统核心实现
+├── modules/                    # 核心模块
 │   ├── perspective_adapter.py  # 视角适应模块
 │   ├── reconstruction_3d.py    # 3D重建模块
 │   ├── fusion_alignment.py     # 融合对齐模块
 │   ├── object_lookup_table.py  # 物体查找表
 │   └── visualization.py        # 可视化模块
-├── utils/
+├── utils/                      # 工具函数
 │   ├── vlm_client.py           # VLM客户端
-│   ├── depth_estimation.py     # 深度估计
+│   ├── object_detector.py      # 物体检测
 │   └── helpers.py              # 辅助函数
-├── config/
-│   └── default.yaml            # 默认配置
+├── config/                     # 配置文件
+│   └── default.yaml            
+├── scripts/                    # 脚本工具
+│   ├── download_arkitscenes.sh # 下载数据集
+│   ├── prepare_arkitscenes.py  # 数据预处理
+│   └── ...
+├── docs/                       # 文档
+│   ├── INSTALL.md              # 安装指南
+│   ├── QUICKSTART.md           # 快速开始
+│   ├── ARCHITECTURE.md         # 架构文档
+│   └── ...
+├── examples/                   # 示例代码
+│   └── example_usage.py
+├── data/                       # 数据目录（不包含在git中）
+├── outputs/                    # 输出目录（不包含在git中）
 ├── requirements.txt
 └── README.md
 ```
@@ -234,11 +256,33 @@ OLT = {
 }
 ```
 
+## 📚 文档
+
+- [安装指南](docs/INSTALL.md) - 详细的安装和环境配置
+- [快速开始](docs/QUICKSTART.md) - 5分钟快速上手
+- [架构文档](docs/ARCHITECTURE.md) - 系统设计和技术架构
+- [ARKitScenes 快速开始](docs/ARKITSCENES_QUICKSTART.md) - 使用 ARKitScenes 数据集
+- [数据下载指南](docs/DATA_DOWNLOAD_GUIDE.md) - 下载和准备数据集
+
+更多文档请查看 [docs/](docs/) 目录。
+
 ## 📄 许可证
 
 MIT License
 
 ## 🤝 贡献
 
-欢迎提交Issue和Pull Request！
+欢迎提交Issue和Pull Request！请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解贡献指南。
+
+## 🙏 致谢
+
+- [SeeGround](https://github.com/iris0329/SeeGround) - 零样本3D视觉定位的原始思路
+- [Qwen2-VL](https://github.com/QwenLM/Qwen2-VL) - 强大的视觉-语言模型
+- [ARKitScenes](https://github.com/apple/ARKitScenes) - 高质量3D场景数据集
+
+## 📧 联系方式
+
+如有问题或建议，请通过以下方式联系：
+- 提交 [Issue](https://github.com/Starryyu77/qwenground/issues)
+- 发送邮件到项目维护者
 

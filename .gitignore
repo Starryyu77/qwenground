@@ -46,11 +46,17 @@ logs/
 *.ckpt
 *.bin
 *.safetensors
+*.onnx
 models/
+weights/
+# 保留小型配置文件
+!config/*.pt
 
 # Data directories
 data/
 datasets/
+# 但保留演示数据
+!data/demo_scene/
 
 # OS files
 .DS_Store
