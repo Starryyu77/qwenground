@@ -1,0 +1,87 @@
+# QwenGround 默认配置
+
+# VLM模型配置
+model:
+  name: "Qwen/Qwen2-VL-7B-Instruct"
+  device: "cuda"
+  use_api: false
+  api_url: "http://localhost:8000/v1"
+  api_key: null
+  max_tokens: 512
+  temperature: 0.1
+
+# 3D重建配置
+reconstruction:
+  # 关键帧数量
+  keyframe_count: 15
+  
+  # 深度估计模型
+  # 选项: "MiDaS_small", "DPT_Large", "DPT_Hybrid"
+  depth_model: "MiDaS_small"
+  
+  # 重建方法
+  # 选项: "depth" (深度估计), "sfm" (Structure from Motion)
+  method: "depth"
+  
+  # 体素下采样大小
+  voxel_size: 0.05
+  
+  # 最小置信度
+  min_confidence: 0.3
+
+# 物体检测配置
+detection:
+  # YOLO模型
+  # 选项: "yolov8n.pt", "yolov8s.pt", "yolov8m.pt", "yolov8l.pt", "yolov8x.pt"
+  yolo_model: "yolov8x.pt"
+  
+  # 置信度阈值
+  conf_threshold: 0.25
+  
+  # IoU阈值（用于NMS）
+  iou_threshold: 0.5
+
+# 视角适应配置
+perspective:
+  # 目标分辨率 (宽, 高)
+  target_resolution: [1280, 720]
+  
+  # 最小场景变化阈值
+  min_scene_change: 0.3
+  
+  # 关键帧提取方法
+  # 选项: "uniform", "scene_change", "hybrid"
+  extraction_method: "hybrid"
+
+# 融合对齐配置
+fusion:
+  # OLT合并阈值
+  merge_iou_threshold: 0.5
+  merge_distance_threshold: 0.5
+  
+  # 空间关系阈值
+  spatial_near_threshold: 1.5
+  spatial_vertical_threshold: 0.2
+  spatial_horizontal_threshold: 0.3
+
+# 可视化配置
+visualization:
+  # 生成旋转动画
+  create_animation: true
+  
+  # 动画参数
+  animation_frames: 36
+  animation_fps: 10
+  
+  # 交互式可视化（需要显示器）
+  show_interactive: false
+  
+  # 保存结果图像
+  save_result_images: true
+
+# 日志配置
+logging:
+  level: "INFO"
+  # 可选：指定日志文件
+  # file: "qwenground.log"
+

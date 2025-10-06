@@ -1,0 +1,44 @@
+# QwenGround 依赖包
+# 核心深度学习和视觉库
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.37.0
+qwen-vl-utils>=0.0.5
+
+# 3D处理和点云
+open3d>=0.18.0
+trimesh>=4.0.0
+
+# 计算机视觉
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# 深度估计
+timm>=0.9.0  # MiDaS依赖
+
+# 目标检测
+ultralytics>=8.0.0  # YOLOv8
+
+# VLM部署
+vllm>=0.3.0
+ray>=2.9.0
+
+# 数据处理
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+
+# 可视化
+matplotlib>=3.7.0
+plotly>=5.17.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9
+
+# 工具
+tqdm>=4.66.0
+pyyaml>=6.0
+requests>=2.31.0
+
+# SfM相关（可选）
+pycolmap>=0.6.0; platform_system != "Windows"
+
